@@ -29,9 +29,10 @@ abstract: Abstract Photometric stereo is a well‐established method with outsta
   an iterative depth optimization. The reconstruction error of our method is equal
   or smaller than previous work, and reconstruction results are characterized by robust
   handling of depth‐discontinuities, without any smearing artifacts.
-links:
-- name: URL
-  url: https://onlinelibrary.wiley.com/doi/10.1111/cgf.14707
+
+# links:
+# - name: URL
+#   url: https://onlinelibrary.wiley.com/doi/10.1111/cgf.14707
 
 url_pdf: 'https://onlinelibrary.wiley.com/doi/epdf/10.1111/cgf.14707'
 url_code: ''
