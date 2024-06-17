@@ -9,7 +9,7 @@ publishDate: '2024-06-17T11:50:34.010317Z'
 publication_types:
 - article-journal
 publication: '*Computer Graphics Forum*'
-doi: 10.1111/cgf.14707
+# doi: 10.1111/cgf.14707
 abstract: Abstract Photometric stereo is a well‐established method with outstanding
   traits to recover surface details and material properties, like surface albedo or
   even specularity. However, while the surface is locally well‐defined, computing
