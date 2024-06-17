@@ -2,8 +2,8 @@
 title: 'ShadowPatch: Shadow Based Segmentation for Reliable Depth Discontinuities
   in Photometric Stereo'
 authors:
-- Moritz Heep
-- E. Zell
+- admin
+- Eduard Zell
 date: '2022-10-01'
 publishDate: '2024-06-17T11:50:34.010317Z'
 publication_types:
@@ -32,4 +32,18 @@ abstract: Abstract Photometric stereo is a well‐established method with outsta
 links:
 - name: URL
   url: https://onlinelibrary.wiley.com/doi/10.1111/cgf.14707
+
+url_pdf: 'https://onlinelibrary.wiley.com/doi/epdf/10.1111/cgf.14707'
+url_code: ''
+url_dataset: ''
+url_poster: ''
+url_project: ''
+url_slides: ''
+url_source: ''
+url_video: 'https://youtu.be/XYmJOfnWTHg?si=3G22FUG2L24ZBlOh'
+
+image:
+  caption: ''
+  focal_point: ''
+  preview_only: false
 ---
