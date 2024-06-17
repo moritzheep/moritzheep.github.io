@@ -24,9 +24,9 @@ role: Research Group Leader
 external_link: 'http://www.eduardzell.com/'
 
 # Organizations/Affiliations to display in Biography blox
-organizations:
-  - name: PhenoRob
-    url: https://www.phenorob.de/
+# organizations:
+#   - name: PhenoRob
+#     url: https://www.phenorob.de/
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
