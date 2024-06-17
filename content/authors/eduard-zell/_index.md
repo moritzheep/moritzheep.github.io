@@ -13,7 +13,7 @@ last_name: Zell
 # status:
 #   icon: ☕️
 
-external_link: 'http://www.eduardzell.com/'
+# external_link: 'http://www.eduardzell.com/'
 
 # Is this the primary user of the site?
 superuser: false
