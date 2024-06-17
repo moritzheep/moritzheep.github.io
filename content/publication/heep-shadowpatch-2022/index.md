@@ -4,6 +4,7 @@ title: 'ShadowPatch: Shadow Based Segmentation for Reliable Depth Discontinuitie
 authors:
 - admin
 - Eduard Zell
+- eduardzell
 date: '2022-10-01'
 publishDate: '2024-06-17T11:50:34.010317Z'
 publication_types:
