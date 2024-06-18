@@ -30,7 +30,7 @@ organizations:
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
-  - icon: at-symbol
+  - icon: envelope
     url: 'mailto:moritzheep@gmx.de'
     label: E-mail Me
   #- icon: brands/x
@@ -41,28 +41,32 @@ profiles:
     url: https://github.com/moritzheep
   - icon: brands/linkedin
     url: https://www.linkedin.com/in/moritzheep
-  - icon: academicons/google-scholar
-    url: https://scholar.google.de/citations?user=yCHKHtwAAAAJ
+    label: Follow me on LinkedIn
   - icon: academicons/orcid
     url: https://orcid.org/0009-0009-3760-8371
+    label: Find my Research on Orcid
+  - icon: academicons/google-scholar
+    url: https://scholar.google.de/citations?user=yCHKHtwAAAAJ
+    label: Find my Research on Google Scholar
+
 
 interests:
-  - Computer Graphics / Computer Vision
+  - Computer Graphics / Vision
   - 3D Reconstruction
   - Photometric Stereo
   - Plants
 
 education:
   - area: MSc Physics
-    institution: Goettingen University
+    institution: University of Göttingen
     date_start: 2016
     date_end: 2020
   - area: BSc Physics
-    institution: Goettingen University
+    institution: University of Göttingen
     date_start: 2013
     date_end: 2016
   - area: BSc Mathematics
-    institution: Goettingen University
+    institution: University of Göttingen
     date_start: 2013
     date_end: 2020
 #     summary: |
@@ -194,6 +198,6 @@ education:
 
 I am a PhD student at the University of Bonn in the field of Computer Science. My research focuses on the intersection of 3D Reconstruction and Mesh Processing. In particular, at PhenoRob I am working on photometric stereo techniques for the reconstruction of plants.
 
-During my time at Goettingen Universtiy, I received a Masters degree in Physics and Bachelors degrees in Physics and Mathematics.
+During my time at the University of Göttingen, I received a Masters degree in Physics and Bachelors degrees in Physics and Mathematics.
 
 
