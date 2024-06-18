@@ -51,7 +51,23 @@ sections:
           - publication
         # featured_only: true
     design:
-      view: compact
+      # The following views seem to work: 'citation', 'article-grid', 'card'
+      # The following views are not found: 'list', 'compact', 'showcase', 'masonry', 'showcase' -> fallback to 'card' which looks different than promised
+      view: citation
+      columns: 1
+
+  - block: collection
+    id: projects
+    content:
+      title: Projects
+      count: 0
+      filters:
+        folders:
+          - project
+        featured_only: false
+    design:
+      view: article-grid
+      fill_image: false
       columns: 1
   # - block: collection
   #   content:
@@ -74,13 +90,13 @@ sections:
   #     view: article-grid
   #     columns: 1
   # - block: collection
-  #   id: news
+  #   id: projects
   #   content:
-  #     title: Recent News
+  #     title: Projects
   #     subtitle: ''
   #     text: ''
   #     # Page type to display. E.g. post, talk, publication...
-  #     page_type: post
+  #     page_type: project
   #     # Choose how many pages you would like to display (0 = all pages)
   #     count: 5
   #     # Filter on criteria
