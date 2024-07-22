@@ -197,6 +197,6 @@ education:
 
 I am a PhD student at the University of Bonn in the field of Computer Science. My research focuses on the intersection of 3D Reconstruction and Mesh Processing. In particular, at PhenoRob I am working on photometric stereo techniques for the reconstruction of plants.
 
-During my time at the University of Göttingen, I received a Masters degree in Physics and Bachelors degrees in Physics and Mathematics.
+During my time at the University of Göttingen, I received a Masters degree in Physics and Bachelors degrees in Physics and Mathematics. During my graduate studies, I spent a semester at McMaster University in Canada.
 
 

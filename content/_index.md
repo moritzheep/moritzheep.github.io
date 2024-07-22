@@ -43,15 +43,29 @@ sections:
   #   design:
   #     columns: '1'
   - block: collection
+    id: talks
+    content:
+      title: Upcoming
+      filters:
+        folders:
+          - event
+        exclude_past: true
+        exclude_future: false
+    design:
+      view: article-grid
+      columns: 1
+
+  - block: collection
     id: papers
     content:
-      title: Publications
+      title: 'Publications'
       filters:
         folders:
           - publication
         # featured_only: true
     design:
       # The following views seem to work: 'citation', 'article-grid', 'card'
+      # Additionally, there is: 'date-title-summary'
       # The following views are not found: 'list', 'compact', 'showcase', 'masonry', 'showcase' -> fallback to 'card' which looks different than promised
       view: citation
       columns: 1
@@ -59,7 +73,7 @@ sections:
   - block: collection
     id: projects
     content:
-      title: Projects
+      title: 'Projects'
       count: 0
       filters:
         folders:
@@ -69,6 +83,18 @@ sections:
       view: article-grid
       fill_image: false
       columns: 1
+
+  # - block: collection
+  #   id: news
+  #   content:
+  #     title: 'News'
+  #     count: 0
+  #     filters:
+  #       folders:
+  #         - post
+  #   design:
+  #     view: date-title-summary
+  #     columns: 2
   # - block: collection
   #   content:
   #     title: Recent Publications
@@ -79,16 +105,6 @@ sections:
   #       exclude_featured: false
   #   design:
   #     view: citation
-  # - block: collection
-  #   id: talks
-  #   content:
-  #     title: Recent & Upcoming Talks
-  #     filters:
-  #       folders:
-  #         - event
-  #   design:
-  #     view: article-grid
-  #     columns: 1
   # - block: collection
   #   id: projects
   #   content:

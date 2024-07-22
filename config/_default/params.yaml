@@ -6,14 +6,14 @@
 # Appearance
 appearance:
   mode: system
-  color: emerald
+  color: Emerald
 
 # SEO
 marketing:
   seo:
     site_type: Person
     local_business_type: ''
-    org_name: ''
+    org_name: 'Moritz Heep'
     description: 'Researcher at the University of Bonn'
     twitter: ''
   analytics:
