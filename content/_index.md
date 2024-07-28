@@ -49,11 +49,11 @@ sections:
       filters:
         folders:
           - event
-        exclude_past: true
+        exclude_past: false
         exclude_future: false
     design:
       view: article-grid
-      columns: 1
+      columns: 2
 
   - block: collection
     id: papers
