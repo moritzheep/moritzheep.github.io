@@ -28,10 +28,8 @@ image:
 tags:
 - "Shadow Segmentation"
 
-sections: [Overview, Results]
+# sections: [Overview, Results]
 ---
 
 ## Overview
 ![screen reader text](overview.png "Starting from a set of shadow masks, we use templates to extract light-to-shadow transitions. After combining these transitions into an edge strength and direction, we apply non-maximum suppression to obtain thin outlines. The segmentation is performed on a Delaunay triangulation of the detected outline points.")
-
-## Results
