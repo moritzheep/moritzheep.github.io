@@ -33,3 +33,6 @@ tags:
 
 ## Overview
 ![screen reader text](overview.png "Starting from a set of shadow masks, we use templates to extract light-to-shadow transitions. After combining these transitions into an edge strength and direction, we apply non-maximum suppression to obtain thin outlines. The segmentation is performed on a Delaunay triangulation of the detected outline points.")
+
+## ⭐ACM Student Research Competition
+This poster won third place in the graduate student category of the ACM Student Research Competition at SIGGRAPH 2024 in Denver.
