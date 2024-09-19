@@ -3,8 +3,8 @@ title: "Image Segmentation from Shadow-Hints using Minimum Spanning Trees"
 authors:
 - admin
 - Eduard Zell
-date: '2024-07-01'
-# publishDate: '2024-07-24T19:44:00.516385Z'
+date: '2024-07-25'
+publishDate: '2024-07-25'
 publication_types:
 - book
 publication: '*Association for Computing Machinery*'
