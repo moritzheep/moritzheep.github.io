@@ -1,0 +1,141 @@
+<!-- <link rel="stylesheet" href="style.css"> -->
+<figure class="image-comparison">
+    <div class="images-container">
+        <img class="left-image" src="{{ .Get "left-img" }}" alt="before"/>
+        <img class="right-image" src="{{ .Get "right-img" }}" alt="after"/>
+        <div class="left-label"><h4>{{ .Get "left-label" }}</h4></div>
+        <div class="right-label"><h4>{{ .Get "right-label" }}</h4></div>
+        <div class="slider-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+            </svg>
+        </div>
+        <div class="slider-line"></div>
+        <input type="range" class="slider" min="1" max="99"/>
+    </div>
+    <figcaption>{{ .Get "caption"}}</figcaption>
+</figure>
+<style>
+    .image-comparison
+    {
+        width: 100%;
+    }
+
+    .image-comparison img 
+    {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: left;
+        vertical-align: top;
+        margin: 0;
+    }
+
+    .image-comparison .images-container
+    {
+        position: relative;
+        width: 100%;
+        max-width: 700px;
+        height: auto;
+        /* display: flex; */
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .image-comparison .images-container .left-image
+    {
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 50%;
+        height: 100%;
+    }
+
+    /* .image-comparison .images-container .right-image
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    } */
+
+    .image-comparison .images-container .slider
+    {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+    }
+
+    .image-comparison .images-container .slider-line
+    {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height: 100%;
+        width: 4px;
+        background: #fff;
+        
+        transform: translateX(-50%);
+    }
+
+    .image-comparison .images-container .slider-icon
+    {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100px;
+        height: 100px;
+        color: #fff;
+        transform: translate(-50%, -50%) rotateZ(90deg);
+    }
+
+    .image-comparison .images-container .left-label
+    {
+        position: absolute;
+        top: 4px;
+        left: 0;
+        /* color: #fff; */
+        text-align: center;
+        width: 50%;
+    }
+
+    .image-comparison .images-container .right-label
+    {
+        position: absolute;
+        top: 4px;
+        left: 50%;
+        /* color: #fff; */
+        width: 50%;
+        text-align: center;
+    }
+
+    .image-comparison .images-container .caption
+    {
+
+    }
+</style>
+<script type="text/javascript">
+    const slider = document.querySelector(".image-comparison .slider");
+    const beforeImage = document.querySelector(".image-comparison .left-image");
+    const sliderLine = document.querySelector(".image-comparison .slider-line");
+    const sliderIcon = document.querySelector(".image-comparison .slider-icon");
+    const leftLabel = document.querySelector(".image-comparison .left-label")
+    const rightLabel = document.querySelector(".image-comparison .right-label")
+
+    slider.addEventListener("input", (e) => 
+    {
+        let sliderValue = e.target.value
+        let sliderValuePerc = sliderValue + "%";
+
+        beforeImage.style.width = sliderValuePerc;
+        sliderLine.style.left = sliderValuePerc;
+        sliderIcon.style.left = sliderValuePerc;
+        leftLabel.style.width = sliderValuePerc;
+        rightLabel.style.left = sliderValuePerc;
+
+        let invSliderValue = 100 - e.target.value;
+        sliderValuePerc = invSliderValue + "%";
+        rightLabel.style.width = sliderValuePerc;
+    })
+</script>
