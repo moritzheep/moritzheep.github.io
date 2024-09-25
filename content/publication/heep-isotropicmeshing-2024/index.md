@@ -51,3 +51,12 @@ To create a feature-adaptive mesh before the actual surface integration, we must
 
 {{< image-comparison left-img="images/david_heep2022.png" right-img="images/david_ours.png" left-label="Pixel-Wise" right-label="Ours" caption="Integration results for pixel-based integration and mesh-based integration with 20k pixels/vertices respectively. Our adaptive vertex placement preserves high-frequency details much better than the regular pixel grid.">}}
 
+## Citation
+```
+@inproceedings{heep2024screen-space-meshing,
+    title={An Adaptive Screen-Space Meshing Approach for Normal Integration},
+    author={Moritz Heep and Eduard Zell},
+    booktitle = {European Conference on Computer Vision (ECCV)},
+    year={2024}
+}
+```
