@@ -16,6 +16,7 @@ publication_types:
 abstract: "Reconstructing surfaces from normals is a key component of photometric stereo. This work introduces an adaptive surface triangulation in the image domain and afterwards performs the normal integration on a triangle mesh. Our key insight is that surface curvature can be computed from normals. Based on the curvature, we identify flat areas and aggregate pixels into triangles. Compared to pixel grids, our triangle meshes adapt locally to surface details and yield much sparser representations. We derive a mesh-based formulation of the normal integration problem. Here, the sparser representations yield major runtime benefits."
 
 # url_pdf: 'https://dl.acm.org/doi/pdf/10.1145/3641234.3671025'
+url_preprint: 'https://arxiv.org/abs/2409.16907'
 url_code: 'https://github.com/moritzheep/adaptive-screen-meshing'
 url_dataset: ''
 url_poster: 'poster.pdf'
