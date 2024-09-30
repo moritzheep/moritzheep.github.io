@@ -54,10 +54,14 @@ To create a feature-adaptive mesh before the actual surface integration, we must
 
 ## Citation
 ```
-@inproceedings{heep2024screen-space-meshing,
-    title={An Adaptive Screen-Space Meshing Approach for Normal Integration},
-    author={Moritz Heep and Eduard Zell},
-    booktitle = {European Conference on Computer Vision (ECCV)},
-    year={2024}
+@InProceedings{adaptive_screen_meshing,
+    author="Heep, Moritz and Zell, Eduard",
+    title="An Adaptive Screen-Space Meshing Approach for Normal Integration",
+    booktitle="Computer Vision -- ECCV 2024",
+    year="2025",
+    publisher="Springer Nature Switzerland",
+    pages="445--461",
+    isbn="978-3-031-72920-1",
+    doi="10.1007/978-3-031-72920-1_25"
 }
 ```
