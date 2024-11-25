@@ -12,7 +12,7 @@ doi: 10.1145/3641234.3671025
 abstract: "We propose a novel image segmentation method from shadow masks. These shadow masks are used to detect outline points which are Delaunay triangulated. Our algorithm operates on these triangulations to close incomplete contours and create an image segmentation."
 
 url_pdf: 'https://dl.acm.org/doi/pdf/10.1145/3641234.3671025'
-url_prepreprint: 'https://arxiv.org/pdf/2411.06530'
+url_preprint: 'https://arxiv.org/pdf/2411.06530'
 url_code: ''
 url_dataset: ''
 url_poster: 'https://dl.acm.org/doi/suppl/10.1145/3641234.3671025/suppl_file/SIGGRAPH24_Poster.pdf'
