@@ -45,7 +45,7 @@ sections:
   - block: collection
     id: talks
     content:
-      title: Upcoming
+      title: News
       filters:
         folders:
           - event
