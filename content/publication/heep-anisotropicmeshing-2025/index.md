@@ -8,8 +8,8 @@ authors:
 - admin
 - Sven Behnke
 - Eduard Zell
-date: '2024-10-01'
-publishDate: '2024-09-01'
+date: '2025-06-11'
+publishDate: '2025-03-26'
 publication_types:
 - inproceedings
 publication: '*CVPR*'
