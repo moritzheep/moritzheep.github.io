@@ -8,8 +8,8 @@ authors:
 - admin
 - Sven Behnke
 - Eduard Zell
-date: '2025-06-11'
-publishDate: '2025-03-26'
+date: '2024-06-11'
+publishDate: '2024-03-26'
 publication_types:
 - inproceedings
 publication: '*CVPR*'
@@ -37,4 +37,12 @@ tags:
 # sections: [Overview, Results]
 ---
 Cooming Soon
-```
+{{< mesh-comparison 
+    modelA="meshes/Duck.glb" 
+    modelB="meshes/Duck.glb" 
+    titleA="Isotropic" 
+    titleB="Ours" 
+    infoA="Original design" 
+    infoB="New aerodynamic design" 
+    includeScript="true"
+>}}

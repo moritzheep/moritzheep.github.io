@@ -1,0 +1,181 @@
+{{ $modelA := .Get "modelA" }}
+{{ $modelB := .Get "modelB" }}
+{{ $titleA := .Get "titleA" | default "Model A" }}
+{{ $titleB := .Get "titleB" | default "Model B" }}
+{{ $infoA := .Get "infoA" | default "" }}
+{{ $infoB := .Get "infoB" | default "" }}
+{{ $height := .Get "height" | default "400px" }}
+{{ $uniqueID := now.Unix }}
+
+<!-- Include the model-viewer script -->
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+<!-- Container for the synchronized models -->
+<div class="sync-models-{{ $uniqueID }}">
+  <div class="sync-container">
+    <div class="model-item">
+      <h3>{{ $titleA }}</h3>
+      <model-viewer 
+        id="model-a-{{ $uniqueID }}"
+        src="{{ $modelA }}"
+        alt="{{ $titleA }}"
+        camera-controls
+        touch-action="pan-y"
+        shadow-intensity="1"
+        interaction-prompt="none"
+        disable-zoom>
+      </model-viewer>
+      {{ with $infoA }}<p class="model-info">{{ . }}</p>{{ end }}
+    </div>
+    
+    <div class="model-item">
+      <h3>{{ $titleB }}</h3>
+      <model-viewer 
+        id="model-b-{{ $uniqueID }}"
+        src="{{ $modelB }}"
+        alt="{{ $titleB }}"
+        camera-controls
+        touch-action="pan-y"
+        shadow-intensity="1"
+        interaction-prompt="none"
+        disable-zoom>
+      </model-viewer>
+      {{ with $infoB }}<p class="model-info">{{ . }}</p>{{ end }}
+    </div>
+  </div>
+</div>
+
+<style>
+  .sync-models-{{ $uniqueID }} {
+    margin: 2rem 0;
+  }
+  
+  .sync-models-{{ $uniqueID }} .sync-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .sync-models-{{ $uniqueID }} .model-item {
+    flex: 1;
+    min-width: 300px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .sync-models-{{ $uniqueID }} model-viewer {
+    width: 100%;
+    height: {{ $height }};
+    background-color: #f5f5f5;
+  }
+  
+  .sync-models-{{ $uniqueID }} h3 {
+    text-align: center;
+    margin: 10px 0;
+  }
+  
+  .sync-models-{{ $uniqueID }} .model-info {
+    padding: 10px;
+    margin: 0;
+    background-color: #f9f9f9;
+  }
+  
+  @media (max-width: 768px) {
+    .sync-models-{{ $uniqueID }} .model-item {
+      min-width: 100%;
+    }
+  }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Use a retry mechanism to ensure models are loaded
+  const maxRetries = 20;
+  let retries = 0;
+  
+  function setupSync() {
+    const modelA = document.getElementById('model-a-{{ $uniqueID }}');
+    const modelB = document.getElementById('model-b-{{ $uniqueID }}');
+    
+    if (!modelA || !modelB) {
+      retries++;
+      if (retries < maxRetries) {
+        console.log('Models not ready, retrying...');
+        setTimeout(setupSync, 500);
+      }
+      return;
+    }
+    
+    console.log('Models ready, setting up sync');
+    
+    // Skip using activeModel tracking - direct two-way binding
+    // This is a more reliable approach
+    
+    
+    // Function to copy camera settings
+    function syncAtoB(event) {
+      console.log(event.detail.source);
+      if (event.detail.source != 'user-interaction')
+      {
+        return; // Prevent loop
+      }
+      try {
+        // Copy all camera properties
+        modelB.cameraOrbit = modelA.getCameraOrbit().toString();
+        modelB.cameraTarget = modelA.getCameraTarget().toString();
+        modelB.fieldOfView = modelA.getFieldOfView().toString();
+      } catch (e) {
+        console.error('Error syncing A to B:', e);
+      }
+    }
+    
+    function syncBtoA(event) {
+      if (event.detail.source != 'user-interaction') return; // Prevent loop
+      try {
+        // Copy all camera properties
+        modelA.cameraOrbit = modelB.getCameraOrbit().toString();
+        modelA.cameraTarget = modelB.getCameraTarget().toString();
+        modelA.fieldOfView = modelB.getFieldOfView().toString();
+      } catch (e) {
+        console.error('Error syncing B to A:', e);
+      }
+    }
+    
+    // Set up the event listeners
+    modelA.addEventListener('camera-change', syncAtoB);
+    modelB.addEventListener('camera-change', syncBtoA);
+    
+    // Set initial positions only once both are loaded
+    let modelsLoaded = 0;
+    
+    function checkAllLoaded() {
+      console.log("All Loaded");
+      modelsLoaded++;
+      if (modelsLoaded === 2) {
+        // Both models loaded, set default position
+        const defaultOrbit = '0deg 75deg 2m';
+        const defaultTarget = '0m 0m 0m';
+        
+        // Set initial position on both
+        modelA.cameraOrbit = defaultOrbit;
+        modelA.cameraTarget = defaultTarget;
+        modelB.cameraOrbit = defaultOrbit;
+        modelB.cameraTarget = defaultTarget;
+        
+        console.log('Both models loaded, initial position set');
+      }
+    }
+    
+    // Use model-viewer's load event
+    modelA.addEventListener('load', checkAllLoaded);
+    modelB.addEventListener('load', checkAllLoaded);
+
+    modelA.addEventListener('load-loaded', checkAllLoaded);
+    modelB.addEventListener('load-loaded', checkAllLoaded);
+  }
+  
+  // Start the setup with a delay to ensure model-viewer is defined
+  setTimeout(setupSync, 1000);
+});
+</script>
