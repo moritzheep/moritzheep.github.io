@@ -38,11 +38,10 @@ tags:
 ---
 Cooming Soon
 {{< mesh-comparison 
-    modelA="meshes/Duck.glb" 
-    modelB="meshes/Duck.glb" 
+    modelA="meshes/david_2048_20k_iso.glb" 
+    modelB="meshes/david_2048_20k_ours.glb" 
     titleA="Isotropic" 
-    titleB="Ours" 
-    infoA="Original design" 
-    infoB="New aerodynamic design" 
-    includeScript="true"
+    titleB="Ours"
+    height="800px"
+    caption="Final triangle meshes after integration for isotropic remeshing and our anisotropic decimation. Despite having comparably many vertices, our anistropic decimation preserves details much better."
 >}}
