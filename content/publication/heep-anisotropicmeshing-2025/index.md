@@ -9,7 +9,7 @@ authors:
 - Sven Behnke
 - Eduard Zell
 date: '2025-06-11'
-publishDate: '2025-03-26'
+publishDate: '2024-03-26'
 publication_types:
 - inproceedings
 publication: '*CVPR*'
@@ -38,4 +38,3 @@ tags:
 ---
 ## Coming Soon
 !["Under Construction"](WorkInProgress.jpg "DALLE")
-```
