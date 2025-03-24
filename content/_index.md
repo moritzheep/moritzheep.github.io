@@ -164,7 +164,7 @@ sections:
       text: >-
         Moritz Heep \
 
-        <mheep@uni-bonn.de> \
+        [mheep@uni-bonn.de](mailto:mheep@uni-bonn.de) \
 
         PhenoRob \
 
