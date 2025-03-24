@@ -161,14 +161,14 @@ sections:
     content:
       title: 'Contact'
       subtitle: ''
-      text:
-        Moritz Heep\
+      text: >-
+        Moritz Heep \
 
-        <mheep@uni-bonn.de>\
-        
-        PhenoRob\
+        <mheep@uni-bonn.de> \
 
-        Niebuhrstr. 1a\
+        PhenoRob \
+
+        Niebuhrstr. 1a \
 
         53113 Bonn
     design:

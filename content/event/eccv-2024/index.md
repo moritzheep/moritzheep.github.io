@@ -2,7 +2,6 @@
 title: 'ECCV 2024'
 
 event: ECCV 2024
-event_url: "https://s2024.siggraph.org"
 
 location: MiCo Milano
 address:
@@ -10,7 +9,7 @@ address:
   city: Milan
 #  region: CO
   postcode: '20149'
-  country: United States
+  country: Italy
 
 summary: I will be going to ECCV 2024
 # abstract: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere tellusac convallis placerat. Proin tincidunt magna sed ex sollicitudin condimentum. Sed ac faucibus dolor, scelerisque sollicitudin nisi. Cras purus urna, suscipit quis sapien eu, pulvinar tempor diam.'
