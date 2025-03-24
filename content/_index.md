@@ -155,4 +155,22 @@ sections:
         # Card background color (CSS class)
         css_class: "bg-primary-700"
         css_style: ""
+
+  - block: markdown
+    id: contact
+    content:
+      title: 'Contact'
+      subtitle: ''
+      text:
+        Moritz Heep\
+
+        PhenoRob\
+
+        Niebuhrstr. 1a\
+
+        53113 Bonn\
+
+        mheep@uni-bonn.de
+    design:
+      columns: '1'
 ---
