@@ -164,13 +164,13 @@ sections:
       text:
         Moritz Heep\
 
+        <mheep@uni-bonn.de>\
+        
         PhenoRob\
 
         Niebuhrstr. 1a\
 
-        53113 Bonn\
-
-        mheep@uni-bonn.de
+        53113 Bonn
     design:
       columns: '1'
 ---
