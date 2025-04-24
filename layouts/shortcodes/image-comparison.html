@@ -1,141 +1,213 @@
-<!-- <link rel="stylesheet" href="style.css"> -->
+{{ $imageA := .Get "imageA" }}
+{{ $imageB := .Get "imageB" }}
+{{ $titleA := .Get "titleA" | default "Image A" }}
+{{ $titleB := .Get "titleB" | default "Image B" }}
+{{ $height := .Get "height" | default "auto" }}
+{{ $labelBg := .Get "labelBg" | default "rgba(255,255,255,0.7)" }}
+{{ $labelColor := .Get "labelColor" | default "black" }}
+
+<!-- Container for the image comparison -->
 <figure class="image-comparison">
-    <div class="images-container">
-        <img class="left-image" src="{{ .Get "left-img" }}" alt="before"/>
-        <img class="right-image" src="{{ .Get "right-img" }}" alt="after"/>
-        <div class="left-label"><h4>{{ .Get "left-label" }}</h4></div>
-        <div class="right-label"><h4>{{ .Get "right-label" }}</h4></div>
-        <div class="slider-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+    <div class="image-container" style="{{ if ne $height "auto" }}height: {{ $height }};{{ end }}">
+        <!-- First image -->
+        <div class="image image-b" style="background-image: url('{{ $imageB }}');"></div>
+        
+        <!-- Second image (will be clipped) -->
+        <div class="image image-a" style="background-image: url('{{ $imageA }}');"></div>
+        
+        <!-- Comparison slider elements -->
+        <div class="slider-line"></div>
+        <div class="slider-handle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
             </svg>
         </div>
-        <div class="slider-line"></div>
-        <input type="range" class="slider" min="1" max="99"/>
+        
+        <!-- Image labels -->
+        <div class="label label-a">{{ $titleA }}</div>
+        <div class="label label-b">{{ $titleB }}</div>
+        
+        <!-- Range slider control -->
+        <input type="range" class="slider-control" min="0" max="100" value="50"/>
     </div>
     <figcaption>{{ .Get "caption"}}</figcaption>
 </figure>
+
 <style>
-    .image-comparison
-    {
-        width: 100%;
-    }
-
-    .image-comparison img 
-    {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: left;
-        vertical-align: top;
-        margin: 0;
-    }
-
-    .image-comparison .images-container
-    {
-        position: relative;
+    .image-comparison {
         width: 100%;
         max-width: 700px;
-        height: auto;
-        /* display: flex; */
-        border-radius: 20px;
+        margin: 0 auto;
+    }
+    
+    .image-container {
+        position: relative;
+        width: 100%;
+        border-radius: 10px;
         overflow: hidden;
+        background: #f0f0f0;
+        aspect-ratio: 16/9; /* Default aspect ratio if height is auto */
     }
-
-    .image-comparison .images-container .left-image
-    {
-        position: absolute;
-        top: 0%;
-        left: 0%;
-        width: 50%;
-        height: 100%;
-    }
-
-    /* .image-comparison .images-container .right-image
-    {
+    
+    .image {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-    } */
-
-    .image-comparison .images-container .slider
-    {
-        position: absolute;
-        inset: 0;
-        opacity: 0;
+        background-size: cover;
+        background-position: center;
     }
-
-    .image-comparison .images-container .slider-line
-    {
+    
+    .image-a {
+        /* Will be updated by JavaScript */
+        clip-path: inset(0 50% 0 0);
+        z-index: 2; /* Higher z-index to ensure proper visibility */
+    }
+    
+    .image-b {
+        z-index: 1;
+    }
+    
+    .slider-line {
         position: absolute;
         top: 0;
         left: 50%;
         height: 100%;
-        width: 4px;
-        background: #fff;
-        
-        transform: translateX(-50%);
+        width: 3px;
+        background: white;
+        z-index: 10;
     }
-
-    .image-comparison .images-container .slider-icon
-    {
+    
+    .slider-handle {
         position: absolute;
         top: 50%;
         left: 50%;
-        width: 100px;
-        height: 100px;
-        color: #fff;
-        transform: translate(-50%, -50%) rotateZ(90deg);
+        transform: translate(-50%, -50%) rotate(90deg);
+        width: 30px;
+        height: 30px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 11;
+        box-shadow: 0 0 3px rgba(0,0,0,0.3);
+        cursor: ew-resize;
     }
-
-    .image-comparison .images-container .left-label
-    {
+    
+    .slider-handle svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .label {
         position: absolute;
-        top: 4px;
+        top: 10px;
+        background: {{ $labelBg }};
+        color: {{ $labelColor }};
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+        z-index: 5;
+    }
+    
+    .label-a {
+        left: 10px;
+    }
+    
+    .label-b {
+        right: 10px;
+    }
+    
+    .slider-control {
+        position: absolute;
+        top: 50%;
         left: 0;
-        /* color: #fff; */
-        text-align: center;
-        width: 50%;
-    }
-
-    .image-comparison .images-container .right-label
-    {
-        position: absolute;
-        top: 4px;
-        left: 50%;
-        /* color: #fff; */
-        width: 50%;
-        text-align: center;
-    }
-
-    .image-comparison .images-container .caption
-    {
-
+        transform: translateY(-15px);
+        width: 100%;
+        height: 30px;
+        opacity: 0;
+        cursor: ew-resize;
+        z-index: 20;
     }
 </style>
-<script type="text/javascript">
-    const slider = document.querySelector(".image-comparison .slider");
-    const beforeImage = document.querySelector(".image-comparison .left-image");
-    const sliderLine = document.querySelector(".image-comparison .slider-line");
-    const sliderIcon = document.querySelector(".image-comparison .slider-icon");
-    const leftLabel = document.querySelector(".image-comparison .left-label")
-    const rightLabel = document.querySelector(".image-comparison .right-label")
 
-    slider.addEventListener("input", (e) => 
-    {
-        let sliderValue = e.target.value
-        let sliderValuePerc = sliderValue + "%";
-
-        beforeImage.style.width = sliderValuePerc;
-        sliderLine.style.left = sliderValuePerc;
-        sliderIcon.style.left = sliderValuePerc;
-        leftLabel.style.width = sliderValuePerc;
-        rightLabel.style.left = sliderValuePerc;
-
-        let invSliderValue = 100 - e.target.value;
-        sliderValuePerc = invSliderValue + "%";
-        rightLabel.style.width = sliderValuePerc;
-    })
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Set container height based on loaded images if height is auto
+    if ('{{ $height }}' === 'auto') {
+        const imageA = new Image();
+        imageA.onload = function() {
+            setContainerDimensions(this.width, this.height);
+        };
+        imageA.src = '{{ $imageA }}';
+    }
+    
+    function setContainerDimensions(width, height) {
+        const container = document.querySelector('.image-container');
+        container.style.aspectRatio = (width / height).toFixed(3);
+    }
+    const slider = document.querySelector('.slider-control');
+    const imageA = document.querySelector('.image-a');
+    const sliderLine = document.querySelector('.slider-line');
+    const sliderHandle = document.querySelector('.slider-handle');
+    
+    // Handle slider movement
+    slider.addEventListener('input', function() {
+        const percent = this.value;
+        imageA.style.clipPath = `inset(0 ${100-percent}% 0 0)`;
+        sliderLine.style.left = `${percent}%`;
+        sliderHandle.style.left = `${percent}%`;
+    });
+    
+    // Enable dragging the handle directly
+    let isDragging = false;
+    
+    sliderHandle.addEventListener('mousedown', function(e) {
+        isDragging = true;
+        e.preventDefault();
+    });
+    
+    document.addEventListener('mouseup', function() {
+        isDragging = false;
+    });
+    
+    document.addEventListener('mousemove', function(e) {
+        if (isDragging) {
+            const container = document.querySelector('.image-container');
+            const rect = container.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
+            
+            slider.value = percent;
+            slider.dispatchEvent(new Event('input'));
+        }
+    });
+    
+    // Touch support
+    sliderHandle.addEventListener('touchstart', function(e) {
+        isDragging = true;
+    });
+    
+    document.addEventListener('touchend', function() {
+        isDragging = false;
+    });
+    
+    document.addEventListener('touchmove', function(e) {
+        if (isDragging && e.touches.length > 0) {
+            const container = document.querySelector('.image-container');
+            const rect = container.getBoundingClientRect();
+            const x = e.touches[0].clientX - rect.left;
+            const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
+            
+            slider.value = percent;
+            slider.dispatchEvent(new Event('input'));
+            e.preventDefault();
+        }
+    }, { passive: false });
+    
+    // Set initial state
+    slider.dispatchEvent(new Event('input'));
+});
 </script>

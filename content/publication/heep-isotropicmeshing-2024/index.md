@@ -50,7 +50,7 @@ To create a feature-adaptive mesh before the actual surface integration, we must
 
 ## Results
 
-{{< image-comparison left-img="images/david_heep2022.png" right-img="images/david_ours.png" left-label="Pixel-Wise" right-label="Ours" caption="Integration results for pixel-based integration and mesh-based integration with 20k pixels/vertices respectively. Our adaptive vertex placement preserves high-frequency details much better than the regular pixel grid.">}}
+{{< image-comparison imageA="images/david_heep2022.png" imageB="images/david_ours.png" titleA="Pixel-Wise" titleB="Ours" caption="Integration results for pixel-based integration and mesh-based integration with 20k pixels/vertices respectively. Our adaptive vertex placement preserves high-frequency details much better than the regular pixel grid.">}}
 
 ## Citation
 ```

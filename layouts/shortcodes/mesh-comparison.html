@@ -1,0 +1,304 @@
+{{ $modelA := .Get "modelA" }}
+{{ $modelB := .Get "modelB" }}
+{{ $titleA := .Get "titleA" | default "Model A" }}
+{{ $titleB := .Get "titleB" | default "Model B" }}
+{{ $height := .Get "height" | default "400px" }}
+{{ $labelBg := .Get "labelBg" | default "rgba(255,255,255,0.7)" }}
+{{ $labelColor := .Get "labelColor" | default "black" }}
+
+<!-- Include the model-viewer script -->
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+<!-- Container for the 3D model comparison -->
+<figure class="mesh-comparison">
+    <div class="mesh-container" style="height: {{ $height }};">
+        <!-- First model -->
+        <model-viewer 
+            id="model-viewer-a"
+            class="model model-a"
+            src="{{ $modelA }}"
+            alt="{{ $titleA }}"
+            camera-controls
+            shadow-intensity="2"
+            interaction-prompt="none"
+            exposure="1"
+            disable-zoom
+            environment-image="neutral">
+        </model-viewer>
+        
+        <!-- Second model -->
+        <model-viewer 
+            id="model-viewer-b"
+            class="model model-b"
+            src="{{ $modelB }}"
+            alt="{{ $titleB }}"
+            camera-controls
+            shadow-intensity="2"
+            interaction-prompt="none"
+            exposure="1"
+            disable-zoom
+            environment-image="neutral">
+        </model-viewer>
+        
+        <!-- Comparison slider elements -->
+        <div class="slider-line"></div>
+        <div class="slider-handle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M8.25 15 12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+            </svg>
+        </div>
+        
+        <!-- Model labels -->
+        <div class="label label-a">{{ $titleA }}</div>
+        <div class="label label-b">{{ $titleB }}</div>
+        
+        <!-- Range slider control -->
+        <input type="range" class="slider-control" min="0" max="100" value="50"/>
+    </div>
+    <figcaption>{{ .Get "caption"}}</figcaption>
+</figure>
+
+<style>
+    .mesh-comparison {
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+    
+    .mesh-container {
+        position: relative;
+        width: 100%;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #f0f0f0;
+    }
+    
+    .model {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .model-a {
+        /* Will be updated by JavaScript */
+        clip-path: inset(0 50% 0 0);
+        z-index: 2; /* Higher z-index to ensure proper visibility */
+    }
+    
+    .model-b {
+        /* Will be updated by JavaScript */
+        clip-path: inset(0 0 0 50%);
+        z-index: 1;
+    }
+    
+    .slider-line {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        height: 100%;
+        width: 3px;
+        background: white;
+        z-index: 10;
+    }
+    
+    .slider-handle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+        width: 30px;
+        height: 30px;
+        background: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 11;
+        box-shadow: 0 0 3px rgba(0,0,0,0.3);
+    }
+    
+    .slider-handle svg {
+        width: 18px;
+        height: 18px;
+    }
+    
+    .label {
+        position: absolute;
+        top: 10px;
+        background: {{ $labelBg }};
+        color: {{ $labelColor }};
+        padding: 3px 8px;
+        border-radius: 4px;
+        font-weight: bold;
+        z-index: 5;
+    }
+    
+    .label-a {
+        left: 10px;
+    }
+    
+    .label-b {
+        right: 10px;
+    }
+    
+    .slider-control {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-15px);
+        width: 100%;
+        height: 30px;
+        opacity: 0;
+        cursor: ew-resize;
+        z-index: 20;
+    }
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const slider = document.querySelector('.slider-control');
+    const modelA = document.querySelector('.model-a');
+    const modelB = document.querySelector('.model-b');
+    const sliderLine = document.querySelector('.slider-line');
+    const sliderHandle = document.querySelector('.slider-handle');
+    
+    // Get the model-viewer elements directly
+    const viewerA = document.getElementById('model-viewer-a');
+    const viewerB = document.getElementById('model-viewer-b');
+    
+    // Track which model's camera is being updated to prevent loop
+    let syncInProgress = false;
+    
+    // Function to actually sync the cameras
+    function syncCamera(source, target) {
+        // Prevent synchronization loop
+        if (syncInProgress) {
+            return;
+        }
+        
+        // Set the sync flag
+        syncInProgress = false;
+        
+        try {
+            // The key insight: in model-viewer the zoom is controlled by:
+            // 1. The radius part of cameraOrbit (3rd component)
+            // 2. The fieldOfView (these work together)
+            
+            // Get camera orbit (contains horizontal angle, vertical angle, and radius/zoom)
+            const orbit = source.getCameraOrbit();
+            
+            // Get camera target
+            const targetPoint = source.getCameraTarget();
+            
+            // Get field of view
+            const fov = source.getFieldOfView();
+            
+            // Log what we're syncing for debugging
+            console.log('Source:', {
+                orbit: orbit.toString(),
+                target: targetPoint.toString(),
+                fov: fov.toString()
+            });
+            
+            // Apply settings to the target model in a specific order
+            // First, set target and orbit
+            target.cameraTarget = targetPoint.toString();
+            target.cameraOrbit = orbit.toString();
+            
+            // Then, set field of view separately 
+            // (Important: do this last for proper zoom sync)
+            target.fieldOfView = fov.toString();
+            target.jumpCameraToGoal();
+
+            // Optionally force a render update
+            // if (target.updateFraming) {
+            //     target.updateFraming();
+            // }
+            
+            console.log('Target:', {
+                orbit: target.getCameraOrbit().toString(),
+                target: target.getCameraTarget().toString(),
+                fov: target.getFieldOfView().toString()
+            });
+
+            console.log('Sync complete');
+        } catch (error) {
+            console.error('Error syncing cameras:', error);
+        }
+        
+        // Release the sync lock after a short delay to prevent feedback loops
+        // setTimeout(() => {
+        //     syncInProgress = false;
+        // }, 10);
+    }
+    
+    // Initialize camera syncing once both models are loaded
+    let modelALoaded = false;
+    let modelBLoaded = false;
+    
+    viewerA.addEventListener('load', () => {
+        console.log('Model A loaded');
+        // const material = viewerA.model.materials[0];
+  
+        // // Force flat shading by modifying the shader
+        // material.pbrMetallicRoughness.flatShading = true;
+        // material.needs_update = true;
+        // viewerA.updateFraming();
+
+        modelALoaded = true;
+        if (modelBLoaded) initSync();
+    });
+    
+    viewerB.addEventListener('load', () => {
+        console.log('Model B loaded');
+        // const material = viewerB.model.materials[0];
+  
+        // // Force flat shading by modifying the shader
+        // material.pbrMetallicRoughness.flatShading = true;
+        // material.needs_update = true;
+        // viewerB.updateFraming();
+
+        modelBLoaded = true;
+        if (modelALoaded) initSync();
+    });
+    
+    function initSync() {
+        console.log('Both models loaded, initializing camera sync');
+        
+        // Add camera change event listeners
+        viewerA.addEventListener('camera-change', (event) => {
+            // Only sync if it's from user interaction
+            if (event.detail && event.detail.source === 'user-interaction') {
+                syncCamera(viewerA, viewerB);
+            }
+        });
+        
+        viewerB.addEventListener('camera-change', (event) => {
+            // Only sync if it's from user interaction
+            if (event.detail && event.detail.source === 'user-interaction') {
+                syncCamera(viewerB, viewerA);
+            }
+        });
+        
+        // Initial sync - copy camera from A to B
+        // Wait a bit to ensure both models are fully initialized
+        setTimeout(() => {
+            syncCamera(viewerA, viewerB);
+        }, 500);
+    }
+    
+    // Handle slider movement
+    slider.addEventListener('input', function() {
+        const percent = this.value;
+        modelA.style.clipPath = `inset(0 ${100-percent}% 0 0)`;
+        modelB.style.clipPath = `inset(0 0 0 ${percent}%)`;
+        sliderLine.style.left = `${percent}%`;
+        sliderHandle.style.left = `${percent}%`;
+    });
+    
+    // Set initial state
+    slider.dispatchEvent(new Event('input'));
+});
+</script>
