@@ -38,7 +38,14 @@ tags:
 
 ## Motivation
 Increasing the resolution of the normal map improves the accuracy of fine structures but increases computational complexity. In smooth, featureless regions, this added complexity yields little additional information. 
-![Output of our Adaptive Screen-Space Meshign Approach at different quality settings.](overview.svg "Our screen-space remeshing pipeline decimates smooth, featureless areas efficiently before the normal integration while preserving high-frequency details. Depicted results illustrate high, mid and low-resolution triangulations.")
+
+<div style="display: flex; justify-content: space-between;">
+  <figure style="margin: 0; text-align: left;">
+    <img src="overview.svg" alt="Output of our Adaptive Screen-Space Meshign Approach at different quality settings." style="width: 100%;">
+    <figcaption>Our screen-space remeshing pipeline decimates smooth, featureless areas efficiently before the normal integration while preserving high-frequency details. Depicted results illustrate high, mid and low-resolution triangulations.</figcaption>
+  </figure>
+</div>
+
 We introduce an adaptive screen-space meshing approach to reduce complexity before integration and give a full derivation of the normal integration on general triangle meshes.
 
 By focusing on fine details and removing redundant information, we can avoid the quadratic growth of variables with increasing geometric resolution in pixel-based methods. 
