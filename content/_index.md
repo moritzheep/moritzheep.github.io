@@ -63,7 +63,7 @@ sections:
         folders:
           - publication
         # featured_only: true
-        exclude_future: true
+        exclude_future: false
     design:
       # The following views seem to work: 'citation', 'article-grid', 'card'
       # Additionally, there is: 'date-title-summary'

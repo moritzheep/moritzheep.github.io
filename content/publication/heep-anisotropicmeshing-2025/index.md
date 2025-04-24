@@ -9,7 +9,7 @@ authors:
 - Sven Behnke
 - Eduard Zell
 date: '2025-06-11'
-publishDate: '2025-03-16'
+# publishDate: '2025-03-16'
 publication_types:
 - inproceedings
 publication: 'Accepted for *CVPR*'
