@@ -6,8 +6,8 @@ aliases:
 
 authors:
 - admin
-- Sven Behnke
-- Eduard Zell
+- svenbehnke
+- eduardzell
 date: '2025-06-11'
 publishDate: '2025-04-15'
 publication_types:

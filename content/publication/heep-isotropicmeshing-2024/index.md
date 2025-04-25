@@ -6,7 +6,7 @@ aliases:
 
 authors:
 - admin
-- Eduard Zell
+- eduardzell
 date: '2024-10-01'
 publishDate: '2024-09-01'
 publication_types:

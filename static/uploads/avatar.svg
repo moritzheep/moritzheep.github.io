@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <!-- White square background -->
+  <rect x="0" y="0" width="200" height="200" fill="#ffffff" />
+  
+  <!-- Head -->
+  <circle cx="100" cy="80" r="45" fill="#bdbdbd" />
+  
+  <!-- Body shape - wider and closer to head -->
+  <path d="M0,200 Q100,75 200,200" fill="#bdbdbd" />
+</svg>
