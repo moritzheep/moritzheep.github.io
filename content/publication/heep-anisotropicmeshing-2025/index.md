@@ -37,7 +37,7 @@ tags:
 sections: [Motivation, Overview, Results]
 ---
 ## Motivation
-Normal integration reconstructs 3D surfaces from normal maps obtained e.g. by photometric stereo. These normal maps capture surface details down to the pixel level but require large computational resources for integration at high resolutions. In this work, we replace the dense pixel grid with a sparse anisotropic triangle mesh prior to normal integration. We adapt the triangle mesh to the local geometry in the case of complex surface structures and remove oversampling from flat featureless regions.
+Normal integration reconstructs 3D surfaces from normal maps obtained e.g. by photometric stereo. These normal maps capture surface details down to the pixel level but require large computational resources for integration at high resolutions. In this work, we replace the dense pixel grid with a sparse anisotropic triangle mesh before normal integration. We adapt the triangle mesh to the local geometry in the case of complex surface structures and remove oversampling from flat featureless regions.
 For high-resolution images, the resulting compression reduces normal integration runtimes from hours to minutes while maintaining high surface accuracy.
 ## Overview
 Our algorithm iteratively refines an existing triangle mesh in screen space based on the observed surface normals from photometric stereo. We initialize this triangle mesh by covering each *foreground* pixel with two triangles. We then repeatedly
@@ -46,7 +46,7 @@ Our algorithm iteratively refines an existing triangle mesh in screen space base
 2. **Align Edges** with ridges and furrows of the underlying surface and
 2. **Move Vertices** onto ridges and furrows.
 
-The result is triangle mesh that is much sparser than the original pixel grid and well-adapted to represent the underyling surface after normal integration. 
+The result is a triangle mesh that is much sparser than the original pixel grid and well-adapted to represent the underlying surface after normal integration. 
 <div style="display: flex; justify-content: space-between;">
   <figure style="width: 30%; margin: 0; text-align: center;">
     <img src="figures/image_cv01_rot000_anisotropic_GT_low.svg" alt="Low Resolution" style="width: 100%;">
@@ -70,12 +70,14 @@ The sparsity is controlled either explicitly by setting a vertex budget or impli
     titleA="Isotropic" 
     titleB="Ours"
     height="800px"
-    caption="Final triangle meshes after integration for isotropic remeshing and our anisotropic decimation. Despite having comparably many vertices, our anistropic decimation preserves details much better."
+    caption="Final triangle meshes after integration for isotropic remeshing and our anisotropic decimation. Despite having comparably many vertices, our anisotropic decimation preserves details much better."
 >}}
 
 Our results show that careful alignment of vertices and edges to ridges and furrows of the underlying surface is key to surpassing the quality of previous methods and maintaining high geometric faithfulness even at high compression ratios. Conversely, we achieve comparable results to pixel-based methods at moderate compression ratios. Our method is versatile and allows balancing runtime and quality. It can be adjusted to the needs of almost any photometric stereo pipeline. We included mesh files in the [supplementary material](https://drive.google.com/uc?export=download&id=1VaV_LrEw-LG2u2VpW7cDcjJjfyHCDcxh) to give an impression of the quality of our method.
 
 ## Citation
+This work has been accepted for IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), Nashville TN, USA, June 2025.
+
 ```
 @article{heep2025feature,
   title={Feature-Preserving Mesh Decimation for Normal Integration},
