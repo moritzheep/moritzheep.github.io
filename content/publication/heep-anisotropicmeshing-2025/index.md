@@ -20,7 +20,7 @@ url_pdf: 'https://www.ais.uni-bonn.de/papers/CVPR_2025_Heep_with_Supplementary.p
 url_preprint: 'https://arxiv.org/abs/2504.00867'
 url_code: 'https://github.com/moritzheep/anisotropic-screen-meshing'
 # url_dataset: ''
-# url_poster: 'poster.pdf'
+url_poster: 'poster.pdf'
 # url_project: ''
 # url_slides: ''
 # url_source: ''
