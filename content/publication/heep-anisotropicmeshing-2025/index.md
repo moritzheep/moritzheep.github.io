@@ -76,13 +76,14 @@ The sparsity is controlled either explicitly by setting a vertex budget or impli
 Our results show that careful alignment of vertices and edges to ridges and furrows of the underlying surface is key to surpassing the quality of previous methods and maintaining high geometric faithfulness even at high compression ratios. Conversely, we achieve comparable results to pixel-based methods at moderate compression ratios. Our method is versatile and allows balancing runtime and quality. It can be adjusted to the needs of almost any photometric stereo pipeline. We included mesh files in the [supplementary material](https://drive.google.com/uc?export=download&id=1VaV_LrEw-LG2u2VpW7cDcjJjfyHCDcxh) to give an impression of the quality of our method.
 
 ## Citation
-This work has been accepted for IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), Nashville TN, USA, June 2025.
 
 ```
-@article{heep2025feature,
-  title={Feature-Preserving Mesh Decimation for Normal Integration},
-  author={Heep, Moritz and Behnke, Sven and Zell, Eduard},
-  journal={arXiv preprint arXiv:2504.00867},
-  year={2025}
+@InProceedings{Heep_2025_CVPR,
+    author    = {Heep, Moritz and Behnke, Sven and Zell, Eduard},
+    title     = {Feature-Preserving Mesh Decimation for Normal Integration},
+    booktitle = {Proceedings of the Computer Vision and Pattern Recognition Conference (CVPR)},
+    month     = {June},
+    year      = {2025},
+    pages     = {5783-5792}
 }
 ```
