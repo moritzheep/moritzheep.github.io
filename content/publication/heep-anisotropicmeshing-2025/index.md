@@ -12,8 +12,8 @@ date: '2025-06-11'
 publishDate: '2025-04-15'
 publication_types:
 - inproceedings
-publication: '*IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}*'
-# doi: "10.1007/978-3-031-72920-1_25"
+publication: '*IEEE Conference on Computer Vision and Pattern Recognition (CVPR)*'
+doi: "10.1109/CVPR52734.2025.00543"
 abstract: "This work improves normal integration for 3D surface reconstruction by replacing dense pixel grids with sparse anisotropic triangle meshes. By adapting mesh density to local geometry -- preserving detail in complex areas while simplifying flat regions -- we achieve significant compression. This reduces processing time from hours to minutes for high-resolution images while maintaining accuracy"
 
 url_pdf: 'https://www.ais.uni-bonn.de/papers/CVPR_2025_Heep_with_Supplementary.pdf'
