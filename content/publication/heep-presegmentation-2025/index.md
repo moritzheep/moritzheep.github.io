@@ -16,7 +16,7 @@ publication: 'Accepted for *VMV*'
 # doi: "10.1007/978-3-031-72920-1_25"
 abstract: "Image segmentation has gained a lot of attention in the past. When working with photometric stereo data, we discovered that shadow cues provide valuable spatial information, especially when combining multiple images of the same scene under different lighting conditions. In the following, we present a robust method to pre-segment images, relying heavily on shadow masks as the main input. We first detect object contours from light to shadow transitions. In the second step, we run an image segmentation algorithm based on Delaunay triangulation that is capable of closing the gaps between contours. Our method requires spatial input data but is free from training data. Initial results look promising, generating pre-segmentations close to recent data-driven image segmentation algorithms."
 
-# url_pdf: 'https://www.ais.uni-bonn.de/papers/CVPR_2025_Heep_with_Supplementary.pdf'
+url_pdf: 'https://diglib.eg.org/bitstreams/15774b70-9f88-4ed3-a792-296bb54a825b/download'
 # url_preprint: 'https://arxiv.org/abs/2504.00867'
 # url_code: 'https://github.com/moritzheep/anisotropic-screen-meshing'
 # url_dataset: ''
@@ -40,10 +40,11 @@ tags:
 
 ```
 @InProceedings{Heep_2025_VMV,
+    booktitle = {Vision, Modeling, and Visualization},
+    title     = {{Image Pre-Segmentation from Shadow Masks}},
     author    = {Heep, Moritz and Parakkat, Amal Dev and Zell, Eduard},
-    title     = {Image Pre-Segmentation from Shadow Masks},
-    booktitle = {International Symposium on Vision, Modeling, and Visualization (VMV)},
-    month     = {September},
     year      = {2025},
+    publisher = {The Eurographics Association},
+    doi       = {10.2312/vmv.20251239}
 }
 ```
