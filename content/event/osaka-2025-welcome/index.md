@@ -58,4 +58,4 @@ image:
 #   - example
 ---
 I'm excited to share that I've officially started my research stay at the University of Osaka as a visiting doctoral researcher! I kicked things off with a presentation about my research journey so far, and I'm looking forward to the productive months ahead.
-I'm deeply grateful to Prof. Okura and Prof. Santo here at Osaka for welcoming me and making this opportunity possible. I also want to thank my supervisors at the University of Bonn, Prof. Behnke and Dr. Zell, for their support in helping me pursue this stay. I'm looking forward to learning a lot during my time here, and I hope this stay can help build connections between our institutions.
+I'm deeply grateful to Prof. Okura and Prof. Santo here at Osaka for welcoming me and making this opportunity possible. I also want to thank my supervisors at the University of Bonn, Prof. Behnke and Dr. Zell, for their support in helping me pursue this stay. I'm looking forward to learning a lot during my time here.
