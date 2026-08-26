@@ -24,7 +24,7 @@ role: Researcher
 # Organizations/Affiliations to display in Biography blox
 organizations:
   - name: "Learning and Optimisation for Visual Computing (LOVC)"
-    url: "lovc.cs.uni-bonn.de"
+    url: "https://lovc.cs.uni-bonn.de/"
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
