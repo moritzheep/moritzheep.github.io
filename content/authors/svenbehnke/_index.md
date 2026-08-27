@@ -20,7 +20,7 @@ superuser: false
 # highlight_name: true
 
 # Role/position/tagline
-role: 'Head of Autonomous Intelligent Systems Group'
+role: "Head of the 'Autonomous Intelligent Systems' Group"
 external_link: 'https://www.ais.uni-bonn.de/behnke/'
 headless: true
 ---
