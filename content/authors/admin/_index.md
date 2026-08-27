@@ -19,12 +19,12 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: PhD Student
+role: Researcher
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: PhenoRob
-    url: https://www.phenorob.de/
+  - name: "Learning and Optimisation for Visual Computing (LOVC)"
+    url: "https://lovc.cs.uni-bonn.de/"
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
