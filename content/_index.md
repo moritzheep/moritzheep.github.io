@@ -82,8 +82,8 @@ sections:
         featured_only: false
     design:
       view: article-grid
-      fill_image: false
-      columns: 1
+      # fill_image: false
+      columns: 2
 
   # - block: collection
   #   id: news

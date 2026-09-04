@@ -20,7 +20,7 @@ superuser: false
 # highlight_name: true
 
 # Role/position/tagline
-role: 'Head of Geometry in Machine Learning Group'
+role: "Head of the 'Geometry in Machine Learning' Group"
 external_link: 'https://geometryinml.cs.uni-bonn.de/team/zorah/'
 headless: true
 ---

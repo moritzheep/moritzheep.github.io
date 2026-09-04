@@ -20,7 +20,7 @@ superuser: false
 # highlight_name: true
 
 # Role/position/tagline
-role: 'PhD Student in the Learning and Optimisation for Visual Computing Group'
+role: "PhD Student in the 'Learning and Optimisation for Visual Computing' Group"
 external_link: 'https://www.weissberg.io/'
 headless: true
 ---

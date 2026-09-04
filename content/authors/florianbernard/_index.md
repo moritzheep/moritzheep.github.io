@@ -20,7 +20,7 @@ superuser: false
 # highlight_name: true
 
 # Role/position/tagline
-role: 'Head of Learning and Optimisation for Visual Computing Group'
+role: "Head of the 'Learning and Optimisation for Visual Computing' Group"
 external_link: 'https://lovc.cs.uni-bonn.de/index.php/team/florian-bernard/'
 headless: true
 ---
