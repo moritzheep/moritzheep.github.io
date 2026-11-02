@@ -2,13 +2,13 @@
 title: "Fast Normal Integration for Photometric Stereo Using Coarse-to-Fine Meshing"
 
 aliases:
-- "/coarse-to-fine-meshing/"
+- "/coarse-to-fine-screen-meshing/"
 
 authors:
 - admin
 - florianbernard
 date: '2027-01-04'
-publishDate: '2025-04-15'
+publishDate: '2026-10-04'
 publication_types:
 - inproceedings
 publication: '*IEEE Winter Conference on Applications of Computer Vision (WACV)*'
